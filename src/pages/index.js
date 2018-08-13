@@ -13,7 +13,6 @@ const H1 = styled.h1`
 const IndexPage = ({ data }) => (
   <Layout>
     <H1>Gatsby V2</H1>
-    <img src={gatsbyIcon} alt="" />
     <div>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <PostListing key={node.id} post={node} />

@@ -13,7 +13,11 @@ const Layout = ({ children, data }) => (
         site {
           siteMetadata {
             title
-            desc
+          }
+        }
+        background: imageSharp(id: { regex: "/gatsby-icon.png/" }) {
+          sizes(maxWidth: 1240) {
+            ...GatsbyImageSharpSizes
           }
         }
       }
@@ -31,6 +35,7 @@ const Layout = ({ children, data }) => (
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
         <p>{data.site.siteMetadata.desc}</p>
+        <img src={data.background.sizes} />
         <div
           style={{
             margin: '0 auto',
