@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import Img from 'gatsby-image'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
@@ -13,6 +14,7 @@ const Layout = ({ children, data }) => (
         site {
           siteMetadata {
             title
+            desc
           }
         }
         fileName: file(relativePath: { eq: "images/gatsby-icon.png" }) {
@@ -37,7 +39,14 @@ const Layout = ({ children, data }) => (
         </Helmet>
         <Header siteTitle={data.site.siteMetadata.title} />
         <p>{data.site.siteMetadata.desc}</p>
-        <img src={data.background.sizes} />
+        <Img
+          style={{
+            width: '20rem',
+            height: '20rem',
+          }}
+          sizes={data.fileName.childImageSharp.sizes.srcSet}
+          alt=""
+        />
         <div
           style={{
             margin: '0 auto',
