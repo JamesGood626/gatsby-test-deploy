@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
-import gatsbyIcon from '../images/gatsby-icon.png'
+// import gatsbyIcon from '../images/gatsby-icon.png'
 
 import Layout from '../components/layout'
 

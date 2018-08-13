@@ -15,9 +15,11 @@ const Layout = ({ children, data }) => (
             title
           }
         }
-        background: imageSharp(id: { regex: "/gatsby-icon.png/" }) {
-          sizes(maxWidth: 1240) {
-            ...GatsbyImageSharpSizes
+        fileName: file(relativePath: { eq: "images/gatsby-icon.png" }) {
+          childImageSharp {
+            sizes(maxWidth: 1240) {
+              ...GatsbyImageSharpSizes
+            }
           }
         }
       }
