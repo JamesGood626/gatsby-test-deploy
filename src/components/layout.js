@@ -7,6 +7,25 @@ import { StaticQuery, graphql } from 'gatsby'
 import Header from './header'
 import './layout.css'
 
+// This was the first odd query I found
+// fileName: file(relativePath: { eq: "images/gatsby-icon.png" }) {
+//   childImageSharp {
+//     sizes(maxWidth: 1240) {
+//       ...GatsbyImageSharpSizes
+//     }
+//   }
+// }
+// What result that gets passed into Img sizes prop
+// sizes={data.fileName.childImageSharp.sizes.srcSet}
+// **************************************************************
+// And this is the second way it can be done
+// background: file(relativePath: { regex: "/panda.jpg/" }) {
+//   childImageSharp {
+//     fluid(maxWidth: 1240) {
+//       ...GatsbyImageSharpSizes
+//     }
+//   }
+// }
 const Layout = ({ children, data }) => (
   <StaticQuery
     query={graphql`
@@ -17,7 +36,7 @@ const Layout = ({ children, data }) => (
             desc
           }
         }
-        fileName: file(relativePath: { eq: "images/gatsby-icon.png" }) {
+        background: file(relativePath: { regex: "/panda.jpg/" }) {
           childImageSharp {
             sizes(maxWidth: 1240) {
               ...GatsbyImageSharpSizes
@@ -44,7 +63,7 @@ const Layout = ({ children, data }) => (
             width: '20rem',
             height: '20rem',
           }}
-          sizes={data.fileName.childImageSharp.sizes.srcSet}
+          sizes={data.background.childImageSharp.sizes}
           alt=""
         />
         <div
